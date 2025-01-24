@@ -12,7 +12,7 @@ const Hero = () => {
 
     let animationFrameId: number;
     let step = 0;
-    const maxStep = 64;
+    const maxStep = 128; // Doubled from 64 to slow down the animation
     const balls = 12;
 
     const animate = () => {
