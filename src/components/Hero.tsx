@@ -12,7 +12,7 @@ const Hero = () => {
 
     let animationFrameId: number;
     let step = 0;
-    const maxStep = 320;
+    const maxStep = 360; // Changed to 360 for a complete circle rotation
     const balls = 12;
 
     const animate = () => {
@@ -29,14 +29,16 @@ const Hero = () => {
       ctx.arc(canvas.width / 2, canvas.height / 2, 80, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Calculate center point
-      const centerX = canvas.width / 2 + 115 * Math.cos((step * 2) / maxStep * Math.PI);
-      const centerY = canvas.height / 2 + 115 * Math.sin((step * 2) / maxStep * Math.PI);
+      // Calculate center point using radians for smoother rotation
+      const angle = (step * Math.PI * 2) / maxStep;
+      const centerX = canvas.width / 2 + 115 * Math.cos(angle);
+      const centerY = canvas.height / 2 + 115 * Math.sin(angle);
 
-      // Draw dots
+      // Draw dots with evenly distributed angles
       for (let i = 0; i < balls; i++) {
-        const x = centerX + 115 * Math.cos((i * 2 / balls - step * 2 / maxStep) * Math.PI);
-        const y = centerY + 115 * Math.sin((i * 2 / balls - step * 2 / maxStep) * Math.PI);
+        const ballAngle = ((i * Math.PI * 2) / balls) + angle;
+        const x = centerX + 115 * Math.cos(ballAngle);
+        const y = centerY + 115 * Math.sin(ballAngle);
 
         ctx.beginPath();
         ctx.arc(y, x, 5, 0, Math.PI * 2);
