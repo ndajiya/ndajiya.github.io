@@ -24,36 +24,34 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl sm:text-2xl font-bold text-primary">
-            Nda-jiya
-          </Link>
-          
-          <div className="hidden sm:flex items-center space-x-4">
-            <Button variant="ghost" asChild>
-              <Link to="/">Home</Link>
-            </Button>
-            <Button variant="ghost" asChild>
-              <a 
-                href="https://ndajiya.github.io/mohammed-suberu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Portfolio
-              </a>
-            </Button>
-          </div>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="sm:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <Link to="/" className="text-xl sm:text-2xl font-bold text-primary">
+          Nda-jiya
+        </Link>
+        
+        <div className="hidden sm:flex items-center space-x-4">
+          <Button variant="ghost" asChild>
+            <Link to="/">Home</Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <a 
+              href="https://ndajiya.github.io/mohammed-suberu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Portfolio
+            </a>
           </Button>
         </div>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="sm:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
 
         {/* Mobile menu */}
         {isMenuOpen && (
