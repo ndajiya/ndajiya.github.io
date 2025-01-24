@@ -63,6 +63,12 @@ const Hero = () => {
         height={500}
         className="absolute inset-0 w-full h-full opacity-50"
       />
+      <div className="relative z-10 text-center flex flex-col items-center gap-6">
+        <h1 className="text-4xl font-bold text-primary">Nda-jiya</h1>
+        <button className="px-6 py-2 rounded-full bg-primary text-white hover:bg-opacity-90 transition-all">
+          Get Started
+        </button>
+      </div>
     </div>
   );
 };

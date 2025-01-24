@@ -29,27 +29,10 @@ const Navbar = () => {
           >
             Brand
           </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#features">Features</NavLink>
-            <NavLink href="#about">About</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
-            <button className="px-6 py-2 rounded-full bg-primary text-white hover:bg-opacity-90 transition-all">
-              Get Started
-            </button>
-          </div>
         </div>
       </div>
     </nav>
   );
 };
-
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
-    href={href}
-    className="text-primary hover:text-opacity-70 transition-colors duration-200"
-  >
-    {children}
-  </a>
-);
 
 export default Navbar;
