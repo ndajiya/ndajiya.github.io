@@ -4,7 +4,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isMobile = useIsMobile();
-  const canvasSize = isMobile ? 300 : 500;
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -12,6 +11,18 @@ const Hero = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    // Set canvas size to window size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    // Initial resize
+    resizeCanvas();
+
+    // Add resize listener
+    window.addEventListener('resize', resizeCanvas);
 
     let animationFrameId: number;
     let step = 0;
@@ -33,7 +44,7 @@ const Hero = () => {
       ctx.stroke();
 
       // Calculate center point
-      const radius = canvas.width / 4;
+      const radius = Math.min(canvas.width, canvas.height) / 4;
       const centerX = canvas.width / 2 + radius * Math.cos((step * 2) / maxStep * Math.PI);
       const centerY = canvas.height / 2 + radius * Math.sin((step * 2) / maxStep * Math.PI);
 
@@ -56,16 +67,15 @@ const Hero = () => {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resizeCanvas);
     };
   }, [isMobile]);
 
   return (
-    <div className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-secondary px-4 sm:px-6 md:px-8">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-secondary px-4 sm:px-6 md:px-8">
       <canvas
         ref={canvasRef}
-        width={canvasSize}
-        height={canvasSize}
-        className="absolute inset-0 w-full h-full opacity-50"
+        className="fixed inset-0 w-full h-full opacity-50"
       />
       <div className="relative z-10 text-center flex flex-col items-center gap-4 sm:gap-6 md:gap-8">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary animate-fade-up">
