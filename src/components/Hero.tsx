@@ -63,23 +63,6 @@ const Hero = () => {
         height={500}
         className="absolute inset-0 w-full h-full opacity-50"
       />
-      <div className="relative z-10 text-center px-4 animate-fade-up">
-        <span className="inline-block px-4 py-1 mb-6 text-sm font-medium bg-white/30 backdrop-blur-sm rounded-full text-primary">
-          Introducing Innovation
-        </span>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-primary">
-          Design Meets
-          <br />
-          Perfection
-        </h1>
-        <p className="text-lg md:text-xl text-primary/80 mb-8 max-w-2xl mx-auto">
-          Experience the perfect blend of form and function, crafted with precision
-          and care for those who appreciate the finest details.
-        </p>
-        <button className="px-8 py-3 rounded-full bg-primary text-white hover:bg-opacity-90 transition-all transform hover:scale-105">
-          Explore Now
-        </button>
-      </div>
     </div>
   );
 };
